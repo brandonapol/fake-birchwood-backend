@@ -1,0 +1,6 @@
+@Birchwood_cs_HostAddress = http://localhost:5173
+
+GET {{Birchwood_cs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
