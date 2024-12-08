@@ -3,3 +3,5 @@ pure-tribute-441802-r3-54d153227d4a.json
 *.db
 bin/
 obj/
+bin
+obj
