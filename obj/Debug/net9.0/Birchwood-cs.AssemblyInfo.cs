@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Birchwood-cs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7e6f7656103a86cdd24a71d41be853a87b1d22d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+980bd9b345b9dd1b9069a37b1d5bf2f999790c62")]
 [assembly: System.Reflection.AssemblyProductAttribute("Birchwood-cs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Birchwood-cs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
