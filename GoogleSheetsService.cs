@@ -14,6 +14,8 @@ public class GoogleSheetsService
     {
         _spreadsheetId = spreadsheetId;
 
+        Console.WriteLine("bing bong");
+
         var credential = GoogleCredential.FromFile(credentialsPath)
             .CreateScoped(SheetsService.Scope.Spreadsheets);
 

@@ -1,20 +1,16 @@
-// [Table("cities")]
-// class City : BaseModel
+// using Microsoft.EntityFrameworkCore;
+// using Blog;
+// using Supabase;
+
+// // https://learn.microsoft.com/en-us/ef/ef6/querying/raw-sql
+
+// namespace supaEndpoints;
+
+// public class SupaEndpoints (Supabase.Client SupabaseInstance)
 // {
-//     [PrimaryKey("id", false)]
-//     public int Id { get; set; }
+//     public List<Blog.Blog> GetBlogs()
+//     {
+//         var blogs = SupabaseInstance.Rpc("SELECT * FROM Blogs");
 
-//     [Column("name")]
-//     public string Name { get; set; }
-
-//     [Column("country_id")]
-//     public int CountryId { get; set; }
-// }
-
-// var model = new City
-// {
-//   Name = "The Shire",
-//   CountryId = 554
-// };
-
-// await supabase.From<City>().Insert(model);
+//         return blogs;
+//     }
