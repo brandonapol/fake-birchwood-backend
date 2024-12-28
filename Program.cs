@@ -1,10 +1,6 @@
-using BirchwoodSheets;
-using Blog;
-using Supabase;
-using sheetsEndpoints;
-using Npgsql;
-using Aspire;
 using Microsoft.EntityFrameworkCore;
+using psqlEndpoints;
+using BlogContext;
 
 namespace MainProgram
 {
@@ -23,16 +19,9 @@ namespace MainProgram
 
         private static void ConfigureServices(WebApplicationBuilder builder)
         {
-            var config = GetGoogleSheetsAndSupabaseConfig(builder);
-            var supabaseOptions = new SupabaseOptions
-            {
-                AutoRefreshToken = true,
-                AutoConnectRealtime = true
-            };
+            var connString = GetDbConfig();
 
-            builder.Services.AddDbContext<YourDbContext>(options => options.UseNpgsql(config.PostgresString));
-            builder.Services.AddSingleton(provider => new Client(config.SupabaseKey, config.SupabaseUrl, supabaseOptions));
-            builder.Services.AddSingleton(new GoogleSheetsService(config.CredentialsPath, config.SpreadsheetId));
+            builder.Services.AddDbContext<BlogDbContext>(options => options.UseNpgsql(connString));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddOpenApi();
@@ -61,15 +50,11 @@ namespace MainProgram
             app.MapApplicationEndpoints();
         }
 
-        private static (string PostgresString, string CredentialsPath, string SpreadsheetId, string SupabaseUrl, string SupabaseKey) GetGoogleSheetsAndSupabaseConfig(WebApplicationBuilder builder)
+        private static string GetDbConfig()
         {
-            return (
-                builder.Configuration["Postgres:ConnectionString"] ?? throw new InvalidOperationException("Postgres is wrong"),
-                builder.Configuration["GoogleSheets:CredentialsPath"] ?? throw new InvalidOperationException("GoogleSheets:CredentialsPath not configured"),
-                builder.Configuration["GoogleSheets:SpreadsheetId"] ?? throw new InvalidOperationException("GoogleSheets:SpreadsheetId not configured"),
-                builder.Configuration["Supabase:Url"] ?? throw new InvalidOperationException("Supabase:Url not configured"),
-                builder.Configuration["Supabase:Key"] ?? throw new InvalidOperationException("Supabase:Key not configured")
-            );
+            var connString = "Host=localhost;Port=5432;Username=brandonapol;Database=mydatabase";
+            
+            return connString;
         }
     }
 }

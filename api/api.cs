@@ -7,7 +7,7 @@ class Program
 {
     static void GetBlogs()
     {
-        string connectionString = "Host=your_host;Username=your_username;Password=your_password;Database=your_database";
+        string connectionString = "Host=localhost;Port=5432;Username=brandonapol;Database=mydatabase";
 
         using (var connection = new NpgsqlConnection(connectionString))
         {
