@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using psqlEndpoints;
-using BlogContext;
+using RecipeContext;
 
 namespace MainProgram
 {
@@ -21,7 +21,7 @@ namespace MainProgram
         {
             var connString = GetDbConfig();
 
-            builder.Services.AddDbContext<BlogDbContext>(options => options.UseNpgsql(connString));
+            builder.Services.AddDbContext<RecipeDbContext>(options => options.UseNpgsql(connString));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddOpenApi();

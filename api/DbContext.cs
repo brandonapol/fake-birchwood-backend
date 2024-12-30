@@ -1,13 +1,13 @@
-using Blog;
+using Recipe;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlogContext;
+namespace RecipeContext;
 
-public class BlogDbContext : DbContext
+public class RecipeDbContext : DbContext
 {
-    public DbSet<BlogType> Blogs { get; set; }
-    public DbSet<BlogIngredient> BlogIngredients { get; set; }
-    public BlogDbContext(DbContextOptions<BlogDbContext> options)
+    public DbSet<RecipeType> Recipes { get; set; }
+    public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
+    public RecipeDbContext(DbContextOptions<RecipeDbContext> options)
         : base(options)
     { }
 }

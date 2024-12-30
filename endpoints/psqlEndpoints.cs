@@ -1,18 +1,15 @@
 namespace psqlEndpoints;
 using MainProgram;
 using Microsoft.EntityFrameworkCore;
-using BlogContext;
+using RecipeContext;
+using api;
 public static class Endpoints
 {
     public static WebApplication MapApplicationEndpoints(this WebApplication app)
     {
 
-
-        app.MapGet("/api/blogs", async (BlogDbContext dbContext) =>
-            await dbContext.Blogs
-                .Select(blog => new { blog.Id, blog.Title })
-                .ToListAsync()
-        );
+        app.MapGet("/api/recipes", async (RecipeDbContext dbContext) =>
+            await Program.GetRecipes());
 
         return app;
     }
